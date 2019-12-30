@@ -1,10 +1,10 @@
-package ru.mail.dimaushenko.enums;
+package ru.mail.dimaushenko.model;
 
 /**
  *
  * @author dmitry
  */
-public enum CarModels {
+public enum CarModelEnum {
     AUDI_A4,
     AUDI_A6,
     AUDI_A8

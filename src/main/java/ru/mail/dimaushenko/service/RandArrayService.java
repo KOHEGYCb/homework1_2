@@ -2,30 +2,24 @@ package ru.mail.dimaushenko.service;
 
 import java.lang.invoke.MethodHandles;
 import java.util.Arrays;
-import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.mail.dimaushenko.utils.RandomUtil;
 
-/**
- *
- * @author dmitry
- */
-public class RandArrayService implements IService {
+public class RandArrayService implements HomeWorkServices {
 
-    private final int min = -300;
-    private final int max = 300;
-    private final int amount = 10;
+    private static final int MIN = -300;
+    private static final int MAX = 300;
+    private static final int AMOUNT = 10;
 
-    private final Random rand = new Random();
-    private final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     @Override
     public void run() {
 
-        int arr[] = new int[amount];
+        int arr[] = new int[AMOUNT];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = RandomUtil.getInt(min, max);
+            arr[i] = RandomUtil.getInt(MIN, MAX);
         }
 
         int maxElem = 0;
@@ -38,11 +32,11 @@ public class RandArrayService implements IService {
                 minElem = i;
             }
         }
-        logger.info("Min: " + arr[maxElem] + "  Max: " + arr[minElem]);
+        LOGGER.info("Min: " + arr[maxElem] + "  Max: " + arr[minElem]);
 
         arr[maxElem] = arr[maxElem] * arr[minElem];
 
-        logger.error("Array: " + Arrays.toString(arr));
+        LOGGER.error("Array: " + Arrays.toString(arr));
 
     }
 

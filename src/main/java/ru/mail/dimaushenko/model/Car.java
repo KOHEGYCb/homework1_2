@@ -1,19 +1,10 @@
-package ru.mail.dimaushenko.beans;
+package ru.mail.dimaushenko.model;
 
-import ru.mail.dimaushenko.enums.CarModels;
-
-/**
- *
- * @author dmitry
- */
 public class Car {
 
     private String name;
-    private CarModels carModel;
+    private CarModelEnum carModel;
     private int engineCapacity;
-
-    public Car() {
-    }
 
     public String getName() {
         return name;
@@ -23,11 +14,11 @@ public class Car {
         this.name = name;
     }
 
-    public CarModels getCarModel() {
+    public CarModelEnum getCarModel() {
         return carModel;
     }
 
-    public void setCarModel(CarModels carModel) {
+    public void setCarModel(CarModelEnum carModel) {
         this.carModel = carModel;
     }
 

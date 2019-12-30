@@ -1,10 +1,6 @@
 package ru.mail.dimaushenko.service;
 
-/**
- *
- * @author dmitry
- */
-public interface IService {
+public interface HomeWorkServices {
 
     public void run();
 

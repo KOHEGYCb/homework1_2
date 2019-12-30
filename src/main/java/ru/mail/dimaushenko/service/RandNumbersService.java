@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Logger;
  *
  * @author dmitry
  */
-public class RandNumbersService implements IService {
+public class RandNumbersService implements HomeWorkServices {
 
     private final int amount = 3;
     private final Random random = new Random();

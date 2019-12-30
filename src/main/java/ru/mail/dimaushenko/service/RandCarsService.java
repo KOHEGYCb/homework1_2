@@ -10,32 +10,28 @@ import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ru.mail.dimaushenko.beans.Car;
-import ru.mail.dimaushenko.enums.CarModels;
+import ru.mail.dimaushenko.model.Car;
+import ru.mail.dimaushenko.model.CarModelEnum;
 import ru.mail.dimaushenko.utils.RandomUtil;
 
-/**
- *
- * @author dmitry
- */
-public class RandCarsService implements IService {
+public class RandCarsService implements HomeWorkServices {
 
-    private final int amount = 10;
-    private final Random rand = new Random();
-    private final int minEngineCapacity = 1;
-    private final int maxEngineCapacity = 3;
+    private static final int AMOUNT = 10;
+    private static final Random RAND = new Random();
+    private static final int MIN_ENGINE_CAPACITY = 1;
+    private static final int MAX_ENGINE_CAPACITY = 3;
 
-    private final String filePath = "output";
+    private static final String FILE_PATH = "output";
 
     @Override
     public void run() {
         List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < AMOUNT; i++) {
             Car car = new Car();
             car.setName("Car_" + i);
             car.setCarModel(getRandCarModel());
-            car.setEngineCapacity(RandomUtil.getInt(minEngineCapacity, maxEngineCapacity));
+            car.setEngineCapacity(RandomUtil.getInt(MIN_ENGINE_CAPACITY, MAX_ENGINE_CAPACITY));
             cars.add(car);
         }
         Map<Integer, List<Car>> mapCars = new HashMap<>();
@@ -45,7 +41,7 @@ public class RandCarsService implements IService {
             }
             mapCars.get(car.getEngineCapacity()).add(car);
         }
-        try (PrintWriter print = new PrintWriter(new File(filePath))) {
+        try (PrintWriter print = new PrintWriter(new File(FILE_PATH))) {
             for (int i : mapCars.keySet()) {
                 for (Car car : mapCars.get(i)) {
                     print.println(car);
@@ -56,8 +52,8 @@ public class RandCarsService implements IService {
         }
     }
 
-    private CarModels getRandCarModel() {
-        return CarModels.values()[rand.nextInt(CarModels.values().length)];
+    private CarModelEnum getRandCarModel() {
+        return CarModelEnum.values()[RAND.nextInt(CarModelEnum.values().length)];
     }
 
 }
